@@ -1,0 +1,144 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    list-style: none;
+}
+
+body {
+    background: #ccc;
+    max-width: 100%;
+}
+
+.topbar {
+    background: crimson;
+    width: 100%;
+    padding: 10px;
+    margin-left: -100px;
+}
+
+.logoname {
+    display: flex;
+}
+
+.logoname h1 {
+    margin: 5px;
+    color: #ffffff;
+}
+
+.layout {
+    display: flex;
+}
+
+.sidenavbar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    width: 90px;
+    background: grey;
+    overflow: hidden;
+    transition: width 0.5s ease;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    /* Center logo horizontally */
+    align-items: center;
+    /* Center logo vertically */
+    margin: 10px 0 0 10px;
+    transition: transform 0.5s ease;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    transform: scale(1);
+    transition: transform 0.5s ease;
+}
+
+.sidenavbar:hover img {
+    transform: scale(2);
+}
+
+.sidenavbar li {
+    height: 50px;
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.sidenavbar a {
+    position: relative;
+    color: #ffffff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.sidenavbar .fa-solid {
+    width: 70px;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.sidenavbar a:hover {
+    background: #eee;
+}
+
+.nav-item {
+    display: none;
+    margin-left: 10px;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+
+.sidenavbar:hover {
+    width: 280px;
+}
+
+.sidenavbar:hover .nav-item {
+    display: inline;
+    opacity: 1;
+}
+
+.sidenavbar .logout {
+    position: absolute;
+    bottom: 0;
+}
+
+.main-content {
+    margin-left: 10px;
+    padding: 20px;
+    width: calc(100% - 50px);
+    transition: margin-left 0.5s ease, width 0.5s ease;
+}
+
+.sidenavbar:hover~.main-content {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+}
+
+
+/*Resident Information CSS*/
+.table-content {
+    margin-left: 20px;
+    padding: 10px;
+    width: calc(100% - 80px);
+    transition: margin-left 0.5s ease, width 0.5s ease;
+    background: #ffffff;
+}
+.sidenavbar:hover~.table-content {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+}

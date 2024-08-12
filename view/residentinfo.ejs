@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+
+    <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
+    <script defer src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap5.js"></script>
+    <script defer src="/public/js/script.js"></script>
+</head>
+
+<body>
+    <header class="container">
+        <div class="topbar">
+            <div class="logoname">
+                <h1><i class="fa-solid fa-house"></i></h1>
+                <h1>Brgy. Bilog Information System</h1>
+            </div>
+        </div>
+    </header>
+    <div class="layout">
+        <div class="sidenavbar">
+            <ul class="menu-links">
+                <li>
+                    <a href="" class="logo">
+                        <img src="/public/images/brgylogo.png" alt="">
+                    </a>
+                </li>
+                <li><a href="/dashboard"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a>
+                </li>
+                <li><a href="/residentinfo"><i class="fa-solid fa-person"></i><span class="nav-item">Resident
+                            Information</span></a>
+                </li>
+                <li><a href=""><i class="fa-solid fa-certificate"></i><span class="nav-item">Certificates</span></a>
+                </li>
+                <li><a href=""><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
+                <li><a href=""><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
+                <li><a href="/users/logout" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span
+                            class="nav-item">Log out</span></a></li>
+            </ul>
+        </div>
+        <div class="table-content">
+            <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011-04-25</td>
+                        <td>$320,800</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

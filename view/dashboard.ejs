@@ -1,3 +1,148 @@
-<h1 class="mt-4">Dashboard</h1>
-<p class="lead mb-3">Welcome <%= name %></p>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="container">
+        <div class="topbar">
+            <div class="logoname">
+                <h1><i class="fa-solid fa-house"></i></h1>
+                <h1>Brgy. Bilog Information System</h1>
+            </div>
+        </div>
+    </header>
+    <div class="layout">
+        <div class="sidenavbar">
+            <ul class="menu-links">
+                <li>
+                    <a href="" class="logo">
+                        <img src="/public/images/brgylogo.png" alt="">
+                    </a>
+                </li>
+                <li><a href="/dashboard"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a></li>
+                <li><a href="/residentinfo"><i class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
+                </li>
+                <li><a href=""><i class="fa-solid fa-certificate"></i><span class="nav-item">Certificates</span></a>
+                </li>
+                <li><a href=""><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
+                <li><a href=""><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
+                <li><a href="/users/logout" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span
+                            class="nav-item">Log out</span></a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Population</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Primary card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Female</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Secondary card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Male</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Success card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Purok</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Danger card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Blotter</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Warning card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Precint</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Info card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Voters</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Light card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                            <div class="card-header">Non-voters</div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dark card title</h5>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the
+                                    card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

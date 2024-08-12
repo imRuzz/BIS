@@ -11,4 +11,9 @@ router.get('/dashboard', ensureAuthenticated,
         name: req.user.name
     }));
 
+    router.get('/residentinfo', ensureAuthenticated,
+    (req, res) => res.render('residentinfo', {
+        name: req.user.name
+    }));
+
 module.exports = router;
