@@ -14,17 +14,20 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </head>
 
-<body>
-    <header class="container">
+<body class="dashboardbody">
         <div class="topbar">
             <div class="logoname">
                 <h1><i class="fa-solid fa-house"></i></h1>
                 <h1>Brgy. Bilog Information System</h1>
             </div>
         </div>
-    </header>
     <div class="layout">
         <div class="sidenavbar">
             <ul class="menu-links">
@@ -33,14 +36,14 @@
                         <img src="/public/images/brgylogo.png" alt="">
                     </a>
                 </li>
-                <li><a href="/dashboard"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a></li>
-                <li><a href="/residentinfo"><i class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
+                <li><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a></li>
+                <li><a href="/residentinfo" class="li"><i class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
                 </li>
-                <li><a href=""><i class="fa-solid fa-certificate"></i><span class="nav-item">Certificates</span></a>
+                <li><a href="" class="li"><i class="fa-solid fa-certificate"></i><span class="nav-item">Certificates</span></a>
                 </li>
-                <li><a href=""><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
-                <li><a href=""><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
-                <li><a href="/users/logout" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span
+                <li><a href="" class="li"><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
+                <li><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
+                <li><a href="/users/logout" class="logout li"><i class="fa-solid fa-right-from-bracket"></i><span
                             class="nav-item">Log out</span></a></li>
             </ul>
         </div>
@@ -48,7 +51,7 @@
             <div class="container">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                        <div class="card text-bg-primary mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-primary mb-3" style="max-width: 25rem;">
                             <div class="card-header">Population</div>
                             <div class="card-body">
                                 <h5 class="card-title">Primary card title</h5>
@@ -59,7 +62,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-secondary mb-3" style="max-width: 25rem;">
                             <div class="card-header">Female</div>
                             <div class="card-body">
                                 <h5 class="card-title">Secondary card title</h5>
@@ -70,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card text-bg-success mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-success mb-3" style="max-width: 25rem;">
                             <div class="card-header">Male</div>
                             <div class="card-body">
                                 <h5 class="card-title">Success card title</h5>
@@ -83,7 +86,7 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                        <div class="card text-bg-danger mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-danger mb-3" style="max-width: 25rem;">
                             <div class="card-header">Purok</div>
                             <div class="card-body">
                                 <h5 class="card-title">Danger card title</h5>
@@ -94,7 +97,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card text-bg-warning mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-warning mb-3" style="max-width: 25rem;">
                             <div class="card-header">Blotter</div>
                             <div class="card-body">
                                 <h5 class="card-title">Warning card title</h5>
@@ -105,7 +108,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card text-bg-info mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-info mb-3" style="max-width: 25rem;">
                             <div class="card-header">Precint</div>
                             <div class="card-body">
                                 <h5 class="card-title">Info card title</h5>
@@ -118,7 +121,7 @@
                 </div>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-light mb-3" style="max-width: 25rem;">
                             <div class="card-header">Voters</div>
                             <div class="card-body">
                                 <h5 class="card-title">Light card title</h5>
@@ -129,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+                        <div class="card text-bg-dark mb-3" style="max-width: 25rem;">
                             <div class="card-header">Non-voters</div>
                             <div class="card-body">
                                 <h5 class="card-title">Dark card title</h5>

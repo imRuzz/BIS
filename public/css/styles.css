@@ -9,16 +9,23 @@
     list-style: none;
 }
 
-body {
+.dashboardbody {
     background: #ccc;
-    max-width: 100%;
 }
 
 .topbar {
     background: crimson;
     width: 100%;
     padding: 10px;
-    margin-left: -100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.layout {
+    display: flex;
+    margin-top: 60px; /* Adjust this value to account for the height of the topbar */
 }
 
 .logoname {
@@ -36,9 +43,9 @@ body {
 
 .sidenavbar {
     position: fixed;
-    top: 0;
+    top: 60px;
     bottom: 0;
-    height: 100%;
+    height: calc(100% - 60px);
     left: 0;
     width: 90px;
     background: grey;
@@ -49,29 +56,33 @@ body {
 .logo {
     display: flex;
     justify-content: center;
-    /* Center logo horizontally */
     align-items: center;
-    /* Center logo vertically */
-    margin: 10px 0 0 10px;
-    transition: transform 0.5s ease;
+    margin: 10px 0;
 }
 
 .logo img {
     width: 45px;
     height: 45px;
-    transform: scale(1);
     transition: transform 0.5s ease;
 }
 
-.sidenavbar:hover img {
+.sidenavbar:hover .logo img {
     transform: scale(2);
+    margin-top: 5px;
+}
+
+.sidenavbar ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
 }
 
 .sidenavbar li {
-    height: 50px;
-    margin-top: 20px;
-    list-style: none;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    margin-top: 20px;
     align-items: center;
 }
 
@@ -83,6 +94,7 @@ body {
     align-items: center;
     width: 100%;
     padding: 10px;
+    text-decoration: none;
 }
 
 .sidenavbar .fa-solid {
@@ -92,15 +104,16 @@ body {
     text-align: center;
 }
 
-.sidenavbar a:hover {
+.sidenavbar .li:hover {
     background: #eee;
+    color: #333;
 }
 
 .nav-item {
     display: none;
     margin-left: 10px;
-    transition: opacity 0.5s ease;
     opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .sidenavbar:hover {
@@ -118,27 +131,41 @@ body {
 }
 
 .main-content {
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-left: 80px;
     padding: 20px;
-    width: calc(100% - 50px);
+    width: calc(100% - 80px);
     transition: margin-left 0.5s ease, width 0.5s ease;
 }
 
 .sidenavbar:hover~.main-content {
-    margin-left: 100px;
-    width: calc(100% - 100px);
+    margin-left: 280px;
+    width: calc(100% - 280px);
 }
 
-
-/*Resident Information CSS*/
 .table-content {
-    margin-left: 20px;
-    padding: 10px;
+    margin: 70px;
+    padding: 20px;
     width: calc(100% - 80px);
+    background: #faf9f6;
     transition: margin-left 0.5s ease, width 0.5s ease;
-    background: #ffffff;
 }
+
 .sidenavbar:hover~.table-content {
-    margin-left: 100px;
-    width: calc(100% - 100px);
+    margin-left: 250px;
+    width: calc(100% - 250px);
+}
+
+.add-btn {
+    width: 200px;
+    border: none;
+}
+
+.add-btn a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.add-btn:hover{
+    background: #8d99ae;
 }
