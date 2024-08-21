@@ -16,8 +16,6 @@
         rel="stylesheet">
 
     <script defer src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script defer
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script defer src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
     <script defer src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap5.js"></script>
     <script defer src="/public/js/script.js"></script>
@@ -40,16 +38,33 @@
                         <img src="/public/images/brgylogo.png" alt="">
                     </a>
                 </li>
-                <li><a href="/dashboard"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a>
+                <li><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a>
                 </li>
-                <li><a href="/residentinfo"><i class="fa-solid fa-person"></i><span class="nav-item">Resident
+                <li><a href="/residentinfo" class="li"><i class="fa-solid fa-person"></i><span class="nav-item">Resident
                             Information</span></a>
                 </li>
-                <li><a href=""><i class="fa-solid fa-certificate"></i><span class="nav-item">Certificates</span></a>
+                <li>
+                    <a href="#" class="li sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#cert"
+                        aria-expanded="false" aria-controls="cert">
+                        <i class="fa-solid fa-certificate"></i>
+                        <span class="nav-item">Certificates</span>
+                    </a>
+                    <ul id="cert" class="sidebar-dropdown list-unstyled collapse">
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Clearance</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Residency Certification</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Indigency</a>
+                        </li>
+                    </ul>
                 </li>
-                <li><a href=""><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
-                <li><a href="/settings"><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
-                <li><a href="/users/logout" class="logout"><i class="fa-solid fa-right-from-bracket"></i><span
+                <li><a href="" class="li"><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
+                <li><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a>
+                </li>
+                <li><a href="/users/logout" class="logout li"><i class="fa-solid fa-right-from-bracket"></i><span
                             class="nav-item">Log out</span></a></li>
             </ul>
         </div>
@@ -70,20 +85,20 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
                                         <th>Age</th>
-                                        <th>Start date</th>
+                                        <th>Civil Status</th>
+                                        <th>Sex</th>
+                                        <th>Contact No.</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011-04-25</td>
+                                        <td>Russel Dave</td>
+                                        <td>23</td>
+                                        <td>Single</td>
+                                        <td>Male</td>
+                                        <td>09123456789</td>
                                         <td>
                                             <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
                                             <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
@@ -107,6 +122,42 @@
             </div>
         </div>
     </div>  
+
+    <div class="col-lg-3 card-table">
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card text-bg-primary mb-3">
+                    <div class="card-header">Population</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Primary card title</h5>
+                        <p class="card-text">Some</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card text-bg-danger mb-3">
+                    <div class="card-header">Male</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Danger card title</h5>
+                        <p class="card-text">Some</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card text-bg-success mb-3">
+                    <div class="card-header">Female</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Success card title</h5>
+                        <p class="card-text">Some</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         
     </div>
 </body>

@@ -48,9 +48,12 @@
     height: calc(100% - 60px);
     left: 0;
     width: 90px;
-    background: grey;
+    background: #b1a7a6;
     overflow: hidden;
     transition: width 0.5s ease;
+    box-shadow: -1px 2px 24px 0px rgba(0, 0, 0, 0.52);
+    -webkit-box-shadow: -1px 2px 24px 0px rgba(0, 0, 0, 0.52);
+    -moz-box-shadow: -1px 2px 24px 0px rgba(0, 0, 0, 0.52);
 }
 
 .logo {
@@ -63,12 +66,13 @@
 .logo img {
     width: 45px;
     height: 45px;
+    margin-top: 20px;
     transition: transform 0.5s ease;
 }
 
 .sidenavbar:hover .logo img {
     transform: scale(2);
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .sidenavbar ul {
@@ -78,11 +82,10 @@
     padding: 0;
 }
 
-.sidenavbar li {
+.sidenavbar .li {
     width: 100%;
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    margin-top: 10px;
     align-items: center;
 }
 
@@ -125,6 +128,15 @@
     opacity: 1;
 }
 
+.sidebar-dropdown{
+    margin-left: 30px;
+}
+
+.sidebar-link:hover{
+    background: #eee;
+    color: #333;
+}
+
 .sidenavbar .logout {
     position: absolute;
     bottom: 0;
@@ -149,6 +161,9 @@
     width: calc(100% - 80px);
     background: #faf9f6;
     transition: margin-left 0.5s ease, width 0.5s ease;
+    top: 0;
+        left: 0;
+        z-index: 1000;
 }
 
 .sidenavbar:hover~.table-content {
@@ -168,4 +183,11 @@
 
 .add-btn:hover{
     background: #8d99ae;
+}
+
+.card-table {
+    margin-left: auto;
+    margin-right: 0;
+    width: 20%;
+    margin-top: 80px;
 }
