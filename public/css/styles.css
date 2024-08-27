@@ -23,6 +23,12 @@
     z-index: 1000;
 }
 
+.user {
+    margin-right: 30px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
 .layout {
     display: flex;
     margin-top: 60px; /* Adjust this value to account for the height of the topbar */
@@ -183,6 +189,14 @@
 
 .add-btn:hover{
     background: #8d99ae;
+}
+
+.card {
+    padding: 20px;
+}
+
+.card h5, p{
+    color: #ffffff;
 }
 
 .card-table {

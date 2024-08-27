@@ -18,36 +18,46 @@ router.get('/dashboard', ensureAuthenticated,
         name: req.user.name
     }));
 
-//Add Resident Page
-    router.get('/addResident', ensureAuthenticated,
-    (req, res) => res.render('addResident', {
-        name: req.user.name
-    }));
+// Resident Info Page (Display data)
+router.get('/residentinfo', ensureAuthenticated, (req, res) => {
+    Resident.find({})
+        .then(residents => {
+            res.render('residentinfo', { 
+                residents: residents, 
+                lname: req.user.lname
+            });
+        })
+        .catch(err => {
+            console.error("Something went wrong:", err);
+            res.status(500).send("Error retrieving residents");
+        });
+});
 
 // Insert Resident data into the database
-// router.post('/addResident', upload.none(), (req, res) => {
-//     const newResident = new Resident({
-//         name: req.body.name,
-//         fname: req.body.fname,
-//         lname: req.body.lname,
-//         age: req.body.age,
-//         status: req.body.status,
-//         sex: req.body.sex,
-//         contact: req.body.contact,
-//     });
+router.post('/residentinfo', (req, res) => {
+    const newResident = new Resident({
+        fname: req.body.firstName,
+        lname: req.body.lastName,
+        age: req.body.age,
+        dob: req.body.dob,
+        placeOfBirth: req.body.placeOfBirth,
+        yearsOfResidency: req.body.yearsOfResidency,
+        civilStatus: req.body.civilStatus,
+        position: req.body.position,
+        sex: req.body.sex,
+        natureOfwork: req.body.natureOfwork,
+        education: req.body.education,
+        companyName: req.body.companyName,
+        voterStatus: req.body.voterStatus,
+    });
 
-//     newResident.save((err) => {
-//         if (err) {
-//             res.json({ message: err.message, type: "danger" });
-//         } else {
-//             req.session.message = {
-//                 type: "success",
-//                 message: "Resident added successfully!",
-//             };
-//             res.redirect("/");
-//         }
-//     });
-// });
+    newResident.save()
+    .then(() => res.redirect('/residentinfo'))
+    .catch(err => {
+        console.error(err);
+        res.status(500).send('Server Error');
+    });
+});
 
 //Settings Page
     router.get('/settings', ensureAuthenticated,

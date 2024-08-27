@@ -23,10 +23,14 @@
 
 <body>
     <header class="container">
-        <div class="topbar">
-            <div class="logoname">
+        <div class="topbar d-flex justify-content-between align-items-center">
+            <div class="logoname d-flex align-items-center">
                 <h1><i class="fa-solid fa-house"></i></h1>
-                <h1>Brgy. Bilog Information System</h1>
+                <h1>Bilog Information System</h1>
+            </div>
+            <div class="user d-flex align-items-center">
+                <i class="fa-solid fa-user"></i>
+                <span class="ms-2">Staff</span>
             </div>
         </div>
     </header>
@@ -77,7 +81,7 @@
                         <div class="table-content">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <button class="btn me-md-2 add-btn" type="button" style="background: #2b2d42;">
-                                    <a href="/addResident">Add Resident</a>
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#addRes">Add Resident</a>
                                 </button>
                             </div>
 
@@ -86,35 +90,33 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Age</th>
+                                        <th>Years of Residency</th>
                                         <th>Civil Status</th>
                                         <th>Sex</th>
-                                        <th>Contact No.</th>
+                                        <th>Educational Attainment</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <tr>
-                                        <td>Russel Dave</td>
-                                        <td>23</td>
-                                        <td>Single</td>
-                                        <td>Male</td>
-                                        <td>09123456789</td>
-                                        <td>
-                                            <a href="" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
-                                            <a href="" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
-                                        </td>
-                                    </tr>
+                                    <% residents.forEach(resident=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= resident.fname %> <%= resident.lname %>
+                                            </td>
+                                            <td><%= resident.age %></td>
+                                            <td><%= resident.yearsOfResidency %></td>
+                                            <td><%= resident.civilStatus %></td>
+                                            <td><%= resident.sex %></td>
+                                            <td><%= resident.education %></td>
+                                            <td>
+                                                <a href="/edit/<%= resident._id %>" class="text-success"><i class="fas fa-edit fa-lg mx-1"></i></a>
+                                                <a href="/delete/<%= resident._id %>" class="text-danger"><i class="fas fa-trash fa-lg mx-1"></i></a>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start date</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
+                                
                             </table>
                         </div>
                     </div>
@@ -159,6 +161,104 @@
         </div>
     </div>
         
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addRes">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit Resident Information</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="/residentinfo" method="post" id="addForm">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="dob" class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" id="dob" name="dob">
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="placeOfBirth" class="form-label">Place of Birth</label>
+                                <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth" placeholder="Enter place of birth">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="yearsOfResidency" class="form-label">Years of Residency</label>
+                                <input type="number" class="form-control" id="yearsInBrgy" name="yearsOfResidency"
+                                    placeholder="Enter years of residency.">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="civilStatus" class="form-label">Civil Status</label>
+                                <input type="text" class="form-control" id="civilStatus" name="civilStatus" placeholder="Enter civil status">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="position" name="position" placeholder="Enter position">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="sex" class="form-label">Sex</label>
+                                <select class="form-select" id="sex" name="sex">
+                                    <option selected>Choose...</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="natureOfwork" class="form-label">Nature of work</label>
+                                <input type="text" class="form-control" id="occupation" name="natureOfwork" placeholder="Enter occupation">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="education" class="form-label">Educational Attainment</label>
+                                <input type="text" class="form-control" id="education" name="education" placeholder="Enter educational attainment">
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="companyName" class="form-label">Name of Company</label>
+                                <input type="text" class="form-control" id="companyName" name="companyName"
+                                    placeholder="Enter the name of company.">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="voterStatus" class="form-label">Voter Status</label>
+                                <input type="text" class="form-control" id="voterStatus" name="voterStatus" placeholder="Enter voter status">
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Add New Resident</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
