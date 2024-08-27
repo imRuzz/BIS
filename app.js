@@ -53,7 +53,10 @@ app.use(function(req, res, next) {
 //Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
+app.use('/residentData', require('./routes/residentData'));
 
+const residentData = require('./routes/residentData');
+app.use('/residentData', residentData);
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(__dirname + '/public/images'));
 
