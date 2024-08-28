@@ -4,8 +4,7 @@ const { ensureAuthenticated } = require('../config/auth');
 
 
 //Resident model
-const Resident = require('../models/Resident');
-
+const Resident = require('../models/resident');
 
 //Resident Info Page
     router.get('/residentinfo', ensureAuthenticated,
@@ -13,24 +12,9 @@ const Resident = require('../models/Resident');
         name: req.user.name
     }));
 
-// Resident Info Page (Display data)
-router.get('/residentinfo', ensureAuthenticated, async (req, res) => {
-    try {
-        // Fetch all residents from the database
-        const residents = await Resident.find({});
-        res.render('residentinfo', {
-            name: req.user.name,
-            residents: residents // Pass the fetched residents to the EJS template
-        });
-    } catch (err) {
-        console.error('Error fetching residents:', err);
-        res.status(500).send('Server Error');
-    }
-});
-
 
 // Insert Resident data into the database
-router.post('/residentinfo', async (req, res) => {
+router.post('/addResident', async (req, res, next) => {
     try {
         const newResident = new Resident({
             fname: req.body.firstName,
@@ -53,6 +37,11 @@ router.post('/residentinfo', async (req, res) => {
         console.error('Error saving resident:', err);
         res.status(500).send('Server Error');
     }
+});
+
+// Fetch and display all resident data
+router.get('/residentinfo', async (req, res) => {
+    res.render('residentinfo', {user: 'Russel'})
 });
 
 

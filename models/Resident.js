@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ResidentSchema = new mongoose.Schema({
+const residentSchema = new mongoose.Schema({
     fname: {
         type: String,
         required: true,
@@ -55,5 +55,5 @@ const ResidentSchema = new mongoose.Schema({
     }
 });
 
-const Resident = mongoose.model('Resident', ResidentSchema);
+const Resident = mongoose.model('Resident', residentSchema);
 module.exports = Resident;
