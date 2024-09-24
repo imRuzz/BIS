@@ -14,27 +14,32 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
+    <script src="/public/js/sidenav.js"></script>
 </head>
 
 <body class="dashboardbody">
         <div class="topbar">
-            <div class="logoname">
-                <h1><i class="fa-solid fa-house"></i></h1>
-                <h1>Brgy. Bilog Information System</h1>
+            <div class="logoname d-flex align-items-center">
+                <a href="#" class="logo">
+                    <img src="/public/images/brgylogo.png" alt="">
+                </a>
+                <h3 class="ms-2">Brgy. Bilog Information System</h3>
+            </div>
+            <div class="user-role">
+                <i class="fa-solid fa-user"></i> Admin
             </div>
         </div>
+
     <div class="layout">
-        <div class="sidenavbar">
-            <ul class="menu-links">
-                <li>
-                    <a href="" class="logo">
-                        <img src="/public/images/brgylogo.png" alt="">
-                    </a>
+        <div class="sidenavbar" id="sidebar">
+            <ul class="menu-links sidebar-nav p-0">
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <li class="sidebar-item"><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a></li>
+                <li class="sidebar-item"><a href="/residentData/residentinfo" class="li"><i class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
                 </li>
-                <li><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a></li>
-                <li><a href="/residentData/residentinfo" class="li"><i class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
-                </li>
-                <li>
+                <li class="sidebar-item">
                     <a href="#" class="li sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#cert"
                         aria-expanded="false" aria-controls="cert">
                         <i class="fa-solid fa-certificate"></i>
@@ -42,19 +47,37 @@
                     </a>
                     <ul id="cert" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Certification</a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="" class="sidebar-link">Brgy. Clearance</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Clearance for Securing Fencing Permit</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Indigency</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">Brgy. Residency Certification</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Brgy. Indigency</a>
+                            <a href="" class="sidebar-link">Brgy. Working Clearance</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Building Permit</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Certificate of Responsibility and Accountability</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">First-time Jobseeker</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="/blotterRoute/blotterRecords" class="li"><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
-                <li><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
-                <li><a href="/users/logout" class="logout li"><i class="fa-solid fa-right-from-bracket"></i><span
+                <li class="sidebar-item"><a href="/blotterRoute/blotterRecords" class="li"><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
+                <li class="sidebar-item"><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a></li>
+                <li class="sidebar-item"><a href="/users/logout" class="logout li"><i class="fa-solid fa-right-from-bracket"></i><span
                             class="nav-item">Log out</span></a></li>
             </ul>
         </div>
@@ -160,6 +183,7 @@
 
         </div>
     </div>
+
 </body>
 
 </html>

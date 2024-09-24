@@ -19,61 +19,82 @@
     <script defer src="https://cdn.datatables.net/2.1.3/js/dataTables.js"></script>
     <script defer src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap5.js"></script>
     <script defer src="/public/js/script.js"></script>
+    <script src="/public/js/sidenav.js"></script>
 </head>
 
 <body>
-    <header class="container">
-        <div class="topbar d-flex justify-content-between align-items-center">
-            <div class="logoname d-flex align-items-center">
-                <h1><i class="fa-solid fa-house"></i></h1>
-                <h1>Bilog Information System</h1>
-            </div>
-            <div class="user d-flex align-items-center">
-                <i class="fa-solid fa-user"></i>
-                <span class="ms-2">Staff</span>
-            </div>
+    <div class="topbar">
+        <div class="logoname d-flex align-items-center">
+            <a href="#" class="logo">
+                <img src="/public/images/brgylogo.png" alt="">
+            </a>
+            <h3 class="ms-2">Brgy. Bilog Information System</h3>
         </div>
-    </header>
+        <div class="user-role">
+            <i class="fa-solid fa-user"></i> Admin
+        </div>
+    </div>
+    
     <div class="layout">
-        <div class="sidenavbar">
-            <ul class="menu-links">
-                <li>
-                    <a href="" class="logo">
-                        <img src="/public/images/brgylogo.png" alt="">
-                    </a>
+        <div class="sidenavbar" id="sidebar">
+            <ul class="menu-links sidebar-nav p-0">
+                <div class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <li class="sidebar-item"><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span
+                            class="nav-item">Dashboard</span></a></li>
+                <li class="sidebar-item"><a href="/residentData/residentinfo" class="li"><i
+                            class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
                 </li>
-                <li><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a>
-                </li>
-                <li><a href="/residentData/residentinfo" class="li"><i class="fa-solid fa-person"></i><span class="nav-item">Resident
-                            Information</span></a>
-                </li>
-                <li>
-                    <a href="#" class="li sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#cert"
-                        aria-expanded="false" aria-controls="cert">
+                <li class="sidebar-item">
+                    <a href="#" class="li sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#cert" aria-expanded="false" aria-controls="cert">
                         <i class="fa-solid fa-certificate"></i>
                         <span class="nav-item">Certificates</span>
                     </a>
                     <ul id="cert" class="sidebar-dropdown list-unstyled collapse">
                         <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Certification</a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="" class="sidebar-link">Brgy. Clearance</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Clearance for Securing Fencing Permit</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Brgy. Indigency</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="" class="sidebar-link">Brgy. Residency Certification</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="" class="sidebar-link">Brgy. Indigency</a>
+                            <a href="" class="sidebar-link">Brgy. Working Clearance</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Building Permit</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">Certificate of Responsibility and Accountability</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="" class="sidebar-link">First-time Jobseeker</a>
                         </li>
                     </ul>
                 </li>
-                <li><a href="/blotterRoute/blotterRecords" class="li"><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
-                <li><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span class="nav-item">Settings</span></a>
-                </li>
-                <li><a href="/users/logout" class="logout li"><i class="fa-solid fa-right-from-bracket"></i><span
-                            class="nav-item">Log out</span></a></li>
+                <li class="sidebar-item"><a href="/blotterRoute/blotterRecords" class="li"><i
+                            class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
+                <li class="sidebar-item"><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span
+                            class="nav-item">Settings</span></a></li>
+                <li class="sidebar-item"><a href="/users/logout" class="logout li"><i
+                            class="fa-solid fa-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
             </ul>
         </div>
     
     <div class="container">
+        <div class="section-name">
+            <h3><i class="fa-solid fa-person"></i> Resident Information</h3>
+        </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="table-responsive">
@@ -116,7 +137,6 @@
                 <div class="card text-bg-primary mb-3">
                     <div class="card-header">Population</div>
                     <div class="card-body">
-                        <h5 class="card-title">Primary card title</h5>
                         <p class="card-text">Some</p>
                     </div>
                 </div>
@@ -127,7 +147,6 @@
                 <div class="card text-bg-danger mb-3">
                     <div class="card-header">Male</div>
                     <div class="card-body">
-                        <h5 class="card-title">Danger card title</h5>
                         <p class="card-text">Some</p>
                     </div>
                 </div>
@@ -138,7 +157,6 @@
                 <div class="card text-bg-success mb-3">
                     <div class="card-header">Female</div>
                     <div class="card-body">
-                        <h5 class="card-title">Success card title</h5>
                         <p class="card-text">Some</p>
                     </div>
                 </div>
