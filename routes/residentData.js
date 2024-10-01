@@ -2,46 +2,51 @@ const express = require('express');
 const router = express.Router();
 const { ensureAuthenticated } = require('../config/auth');
 
-
 //Resident model
 const Resident = require('../models/resident');
 
-//Resident Info Page
-    router.get('/residentinfo', ensureAuthenticated,
-    (req, res) => res.render('residentinfo', {
-        name: req.user.name
-    }));
-
-
-// Insert Resident data into the database
-router.post('/addResident', async (req, res, next) => {
+// Resident Info Page - Fetch and display all resident data
+router.get('/residentinfo', ensureAuthenticated, async (req, res) => {
     try {
-        const newResident = new Resident({
-            fname: req.body.firstName,
-            lname: req.body.lastName,
-            age: req.body.age,
-            dob: req.body.dob,
-            placeOfBirth: req.body.placeOfBirth,
-            yearsOfResidency: req.body.yearsOfResidency,
-            civilStatus: req.body.civilStatus,
-            position: req.body.position,
-            sex: req.body.sex,
-            natureOfwork: req.body.natureOfwork,
-            education: req.body.education,
-            companyName: req.body.companyName,
-            voterStatus: req.body.voterStatus,
+        const residents = await Resident.find(); // Fetch all residents
+        res.render('residentinfo', {
+            name: req.user.name,
+            list: residents // Pass the data to the EJS template
         });
-        await newResident.save();
-        res.redirect('/residentData/residentinfo');
     } catch (err) {
-        console.error('Error saving resident:', err);
-        res.status(500).send('Server Error');
+        console.error(err);
+        res.status(500).send("Server error");
     }
 });
 
-// Fetch and display all resident data
-router.get('/residentinfo', async (req, res) => {
-    res.render('residentinfo', {user: 'Russel'})
+// Insert Resident data into the database
+router.post('/addResident', ensureAuthenticated, async (req, res) => {
+    try {
+        const { firstName, lastName, age, dob, placeOfBirth, yearsOfResidency, civilStatus, position, sex, natureOfwork, education, companyName, voterStatus } = req.body;
+
+        const newResident = new Resident({
+            fname: firstName,
+            lname: lastName,
+            age,
+            dob,
+            placeOfBirth,
+            yearsOfResidency,
+            civilStatus,
+            position,
+            sex,
+            natureOfwork,
+            education,
+            companyName,
+            voterStatus,
+        });
+
+        await newResident.save(); // Save the new resident
+        res.redirect('/residentData/residentinfo'); // Redirect after successful save
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
 });
 
 

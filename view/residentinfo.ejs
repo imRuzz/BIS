@@ -111,17 +111,49 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Age</th>
+                                        <th>Date of Birth</th>
+                                        <th>Place of Birth</th>
                                         <th>Years of Residency</th>
                                         <th>Civil Status</th>
+                                        <th>Position</th>
                                         <th>Sex</th>
-                                        <th>Educational Attainment</th>
-                                        <th>Action</th>
+                                        <th>Nature of Work</th>
+                                        <th>Education</th>
+                                        <th>Company Name</th>
+                                        <th>Voter Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                             
                                 <tbody>
-                                    
+                                    <% list.forEach(function(resident) { %>
+                                    <tr>
+                                        <td><%= resident.fname %> <%= resident.lname %></td>
+                                        <td><%= resident.age %></td>
+                                        <td><%= resident.dob.toISOString().split('T')[0] %></td> <!-- Format date -->
+                                        <td><%= resident.placeOfBirth %></td>
+                                        <td><%= resident.yearsOfResidency %></td>
+                                        <td><%= resident.civilStatus %></td>
+                                        <td><%= resident.position %></td>
+                                        <td><%= resident.sex %></td>
+                                        <td><%= resident.natureOfwork %></td>
+                                        <td><%= resident.education %></td>
+                                        <td><%= resident.companyName %></td>
+                                        <td><%= resident.voterStatus %></td>
+                                        <td>
+                                            <!-- Action buttons (e.g., Edit/Delete) can go here -->
+                                            <a href="/edit/<%= resident._id %>" class="text-warning" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a href="/delete/<%= resident._id %>" class="text-danger" title="Delete"
+                                                onclick="return confirm('Are you sure you want to delete this resident?');">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
                                 </tbody>
+
                             
                             </table>
                         </div>
@@ -137,7 +169,7 @@
                 <div class="card text-bg-primary mb-3">
                     <div class="card-header">Population</div>
                     <div class="card-body">
-                        <p class="card-text">Some</p>
+                        <p class="card-text">0</p>
                     </div>
                 </div>
             </div>
@@ -147,7 +179,7 @@
                 <div class="card text-bg-danger mb-3">
                     <div class="card-header">Male</div>
                     <div class="card-body">
-                        <p class="card-text">Some</p>
+                        <p class="card-text">0</p>
                     </div>
                 </div>
             </div>
@@ -157,7 +189,7 @@
                 <div class="card text-bg-success mb-3">
                     <div class="card-header">Female</div>
                     <div class="card-body">
-                        <p class="card-text">Some</p>
+                        <p class="card-text">0</p>
                     </div>
                 </div>
             </div>
@@ -263,6 +295,8 @@
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
