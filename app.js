@@ -55,12 +55,16 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/residentData', require('./routes/residentData'));
 app.use('/blotterRoute', require('./routes/blotterRoute'));
+app.use('/settingsRoute', require('./routes/settingsRoute'));
 
 const residentData = require('./routes/residentData');
 app.use('/residentData', residentData);
 
 const blotterRoute = require('./routes/blotterRoute');
 app.use('/blotterRoute', blotterRoute);
+
+const settingsRoute = require('./routes/settingsRoute');
+app.use('/settingsRoute', settingsRoute);
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use('/images', express.static(__dirname + '/public/images'));

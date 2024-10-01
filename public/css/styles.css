@@ -112,15 +112,17 @@
     font-size: 16px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     width: 100%;
-    padding: 5px;
+    padding: 10px 15px;
+    line-height: 1.5;
     text-decoration: none;
 }
 
 .sidenavbar .fa-solid {
     width: 70px;
-    height: 40px;
-    font-size: 20px;
+    height: 30px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -138,6 +140,11 @@
 
 .sidenavbar .li:hover{
     background: #ffffff;
+    color: #212121;
+}
+
+.sidebar-item.active a {
+    background-color: #ffffff;
     color: #212121;
 }
 
@@ -225,7 +232,7 @@
     height: 300px;
     background: #faf9f6;
     text-decoration: none;
-    padding: 20px;
+    padding: 30px;
 }
 
 .settings-container ul {
@@ -273,3 +280,67 @@
 }
 
 
+.account-table{
+    background: #f8f9fa;
+    margin: 30px;
+    padding: 50px;
+}
+
+.back{
+    margin: 15px;
+    padding: 13px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .topbar {
+        align-items: flex-start;
+        height: 70px;
+    }
+
+    .logoname h3 {
+        font-size: 18px;
+    }
+
+    .user-role {
+    font-size: 14px;
+    margin: 10px;
+}
+
+    .card-title {
+        font-size: 1.25rem;
+    }
+    .card-text {
+        font-size: 1.25rem;
+    }
+
+}
+
+@media (max-width: 576px) {
+    .logoname h3 {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+
+    .logo img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .user-role {
+    display: none;
+    }
+
+    .sidenavbar.active~.main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+    .card-text {
+        font-size: 1rem;
+    }
+
+}
