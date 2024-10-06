@@ -100,7 +100,7 @@
                             <div class="table-content">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                     <button class="btn me-md-2 add-btn" type="button" style="background: #2b2d42;">
-                                        <a href="" data-bs-toggle="modal" data-bs-target="#addBlotter">Add Blotter/Incident</a>
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#addRecord">Add Blotter/Incident</a>
                                     </button>
                                 </div>
             
@@ -118,7 +118,29 @@
                                     </thead>
             
                                     <tbody>
-            
+                                        <% if (recs.length > 0) { %>
+                                            <% recs.forEach(function(record) { %>
+                                                <tr>
+                                                    <td><%= record.time %></td>
+                                                    <td><%= record.date.toLocaleDateString() %></td>
+                                                    <td><%= record.address %></td>
+                                                    <td><%= record.complainant %></td>
+                                                    <td><%= record.respondent %></td>
+                                                    <td><%= record.status %></td>
+                                                    <td>
+                                                        <!-- action button -->
+                                                        <a href="/edit/<%= record._id %>" class="text-warning" title="Edit" data-bs-toggle="modal"
+                                                            data-bs-target="#updateRes">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        <% } else { %>
+                                            <tr>
+                                                <td colspan="7">No records found.</td>
+                                            </tr>
+                                        <% } %>
                                     </tbody>
             
                                 </table>
@@ -135,7 +157,7 @@
                     <div class="card text-bg-primary mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Active Case</h5>
-                            <p class="card-text">0</p>
+                            <h2><%= recs.filter(record => record.status === 'active').length %></h2>
                         </div>
                     </div>
                 </div>
@@ -145,7 +167,7 @@
                     <div class="card text-bg-danger mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Settled Case</h5>
-                            <p class="card-text">0</p>
+                            <h2><%= recs.filter(record => record.status === 'settled').length %></h2>
                         </div>
                     </div>
                 </div>
@@ -155,7 +177,7 @@
                     <div class="card text-bg-success mb-3">
                         <div class="card-body">
                             <h5 class="card-title">Scheduled Case</h5>
-                            <p class="card-text">0</p>
+                            <h2><%= recs.filter(record => record.status === 'scheduled').length %></h2>
                         </div>
                     </div>
                 </div>
@@ -164,110 +186,55 @@
 
     </div>
 
-    <div class="modal fade" id="addRes">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+    <!-- Add Record Modal -->
+    <div class="modal fade" id="addRecord" tabindex="-1" aria-labelledby="complaintModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Add Resident Information</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                    <h5 class="modal-title" id="complaintModalLabel">Blotter Record Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-    
                 <div class="modal-body">
-                    <form action="/blotterRoute/blotterRecords" method="post" id="addBlotter">
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName"
-                                    placeholder="Enter first name">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName"
-                                    placeholder="Enter last name">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="age" class="form-label">Age</label>
-                                <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
-                            </div>
+                    <form method="POST" action="/blotterRoute/addBlotter">
+                        <div class="mb-3">
+                            <label for="time" class="form-label">Time</label>
+                            <input type="time" class="form-control" id="time" name="time" required>
                         </div>
-    
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="dob" class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control" id="dob" name="dob">
-                            </div>
-    
-                            <div class="col-md-4 mb-3">
-                                <label for="placeOfBirth" class="form-label">Place of Birth</label>
-                                <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth"
-                                    placeholder="Enter place of birth">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="yearsOfResidency" class="form-label">Years of Residency</label>
-                                <input type="number" class="form-control" id="yearsInBrgy" name="yearsOfResidency"
-                                    placeholder="Enter years of residency.">
-                            </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="date" name="date" required>
                         </div>
-    
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="civilStatus" class="form-label">Civil Status</label>
-                                <input type="text" class="form-control" id="civilStatus" name="civilStatus"
-                                    placeholder="Enter civil status">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="position" class="form-label">Position</label>
-                                <input type="text" class="form-control" id="position" name="position"
-                                    placeholder="Enter position">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="sex" class="form-label">Sex</label>
-                                <select class="form-select" id="sex" name="sex">
-                                    <option selected>Choose...</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
                         </div>
-    
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="natureOfwork" class="form-label">Nature of work</label>
-                                <input type="text" class="form-control" id="occupation" name="natureOfwork"
-                                    placeholder="Enter occupation">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="education" class="form-label">Educational Attainment</label>
-                                <input type="text" class="form-control" id="education" name="education"
-                                    placeholder="Enter educational attainment">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="companyName" class="form-label">Name of Company</label>
-                                <input type="text" class="form-control" id="companyName" name="companyName"
-                                    placeholder="Enter the name of company.">
-                            </div>
+                        <div class="mb-3">
+                            <label for="complainant" class="form-label">Complainant</label>
+                            <input type="text" class="form-control" id="complainant" name="complainant" required>
                         </div>
-    
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="voterStatus" class="form-label">Voter Status</label>
-                                <input type="text" class="form-control" id="voterStatus" name="voterStatus"
-                                    placeholder="Enter voter status">
-                            </div>
+                        <div class="mb-3">
+                            <label for="respondent" class="form-label">Respondent</label>
+                            <input type="text" class="form-control" id="respondent" name="respondent" required>
                         </div>
-    
-                        <div class="row">
-                            <div class="col-12 d-flex justify-content-end">
-                                <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-danger">Add New Resident</button>
-                            </div>
+                        <!-- Status Dropdown -->
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Status</label>
+                            <select class="form-select" id="status" name="status">
+                                <option value="active">Active</option>
+                                <option value="settled">Settled</option>
+                                <option value="scheduled">Scheduled</option>
+                            </select>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Add Record</button>
                         </div>
                     </form>
-    
                 </div>
             </div>
         </div>
     </div>
+
 
 </body>
 </html>
