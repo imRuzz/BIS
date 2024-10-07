@@ -9,6 +9,9 @@ const User = require('../models/User');
 //Login Page
 router.get('/login', (req, res) => res.render('login'));
 
+//Forgot password Page
+router.get('/forgotpassword', (req, res) => res.render('forgotpassword'));
+
 //Register Page
 router.get('/register', (req, res) => res.render('register'));
 
