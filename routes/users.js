@@ -102,4 +102,46 @@ router.get('/logout', (req, res, next) => {
   });
 });
 
+router.post('/changepassword', async (req, res) => {
+    const userId = req.user ? req.user.id : null; // Get userId from authenticated session
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+
+    // Log userId for debugging
+    console.log('Authenticated user ID:', userId);
+
+    // Check if new password and confirm password match
+    if (!oldPassword || !newPassword || !confirmPassword) {
+        return res.status(400).json({ success: false, message: 'All fields are required' });
+    }
+
+    if (newPassword !== confirmPassword) {
+        return res.status(400).json({ success: false, message: 'New password and confirmation do not match' });
+    }
+
+    try {
+        // Find user by ID
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: 'User not found' });
+        }
+
+        // Check if old password is correct
+        const isMatch = await bcrypt.compare(oldPassword, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ success: false, message: 'Incorrect old password' });
+        }
+
+        // Hash new password
+        user.password = await bcrypt.hash(newPassword, 10);
+        await user.save();
+
+        res.status(200).json({ success: true, message: 'Password changed successfully' });
+    } catch (error) {
+        console.error('Error during password change:', error);
+        res.status(500).json({ success: false, message: 'Server error', error: error.message });
+    }
+});
+
+
+
 module.exports = router;
