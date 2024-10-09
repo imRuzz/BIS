@@ -51,7 +51,7 @@ app.use(function(req, res, next) {
 });
 
 //Routes
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes/page'));
 app.use('/users', require('./routes/users'));
 app.use('/residentData', require('./routes/residentData'));
 app.use('/blotterRoute', require('./routes/blotterRoute'));
