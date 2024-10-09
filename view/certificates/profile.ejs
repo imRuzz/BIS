@@ -128,20 +128,23 @@
 
         <div class="information">
             <div class="information-header">
-                <h4>Name: </h4>
-                <h5>Age: </h5>
-                <h5>Sex: </h5>
+                <h4>Name: <%= resident.fname %> <%= resident.lname %></h4>
+                <h5>Age: <%= resident.age %></h5>
+                <h5>Sex: <%= resident.sex %></h5>
+                <h5>Contact No: <%= resident.contact %></h5>
             </div>
 
             <div class="information">
-                <p>Date of Birth: </p>
-                <p>Place of Birth: </p>
-                <p>Years of Residency: </p>
-                <p>Civil Status: </p>
-                <p>Nature of Work: </p>
-                <p>Education: </p>
-                <p>Company Name: </p>
-                <p>Voter Status: </p>
+                <p>Date of Birth: <%= new Date(resident.dob).toLocaleDateString('en-GB') %></p>
+                <p>Place of Birth: <%= resident.placeOfBirth %></p>
+                <p>Years of Residency: <%= resident.yearsOfResidency %></p>
+                <p>Civil Status: <%= resident.civilStatus %></p>
+                <p>Religion: <%= resident.religion %></p>
+                <p>Occupation: <%= resident.occupation %></p>
+                <p>Citizenship: <%= resident.citizenship %></p>
+                <p>Education: <%= resident.education %></p>
+                <p>Company Name: <%= resident.companyName %></p>
+                <p>Voter Status: <%= resident.voterStatus %></p>
             </div>
         </div>
     </div>

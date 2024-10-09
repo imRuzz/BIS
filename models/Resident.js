@@ -9,6 +9,10 @@ const residentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    suffix: {
+        type: String,
+        required: false,
+    },
     age: {
         type: Number,
         required: true,
@@ -29,7 +33,11 @@ const residentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    position: {
+    religion: {
+        type: String,
+        required: false,
+    },
+    citizenship: {
         type: String,
         required: true,
     },
@@ -37,7 +45,7 @@ const residentSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    natureOfwork: {
+    occupation: {
         type: String,
         required: true,
     },
@@ -48,6 +56,10 @@ const residentSchema = new mongoose.Schema({
     companyName: {
         type: String,
         required: true,
+    },
+    contact: {
+        type: String,
+        required: false,
     },
     voterStatus: {
         type: String,

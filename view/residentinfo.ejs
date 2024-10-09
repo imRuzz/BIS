@@ -25,6 +25,9 @@
 <body>
     <div class="topbar">
         <div class="logoname d-flex align-items-center">
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
             <a href="#" class="logo">
                 <img src="/public/images/brgylogo.png" alt="">
             </a>
@@ -38,17 +41,16 @@
     <div class="layout">
         <div class="sidenavbar" id="sidebar">
             <ul class="menu-links sidebar-nav p-0">
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <li class="sidebar-item"><a href="/dashboard" class="li"><i class="fa-solid fa-house"></i><span
-                            class="nav-item">Dashboard</span></a></li>
-                <li class="sidebar-item"><a href="/residentData/residentinfo" class="li"><i
-                            class="fa-solid fa-person"></i><span class="nav-item">Resident Information</span></a>
+        
+                <li class="sidebar-item"><a href="/dashboard" class="li" data-bs-toggle="tooltip" title="Dashboard"><i
+                            class="fa-solid fa-house"></i><span class="nav-item">Dashboard</span></a></li>
+                <li class="sidebar-item" data-bs-toggle="tooltip" title="Resident Information"><a
+                        href="/residentData/residentinfo" class="li"><i class="fa-solid fa-person"></i><span
+                            class="nav-item">Resident Information</span></a>
                 </li>
-                <li class="sidebar-item">
-                    <a href="#" class="li sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#cert" aria-expanded="false" aria-controls="cert">
+                <li class="sidebar-item" data-bs-toggle="tooltip" title="Certificates">
+                    <a href="#" class="li sidebar-link collapsed has-dropdown" data-bs-toggle="collapse" data-bs-target="#cert"
+                        aria-expanded="false" aria-controls="cert">
                         <i class="fa-solid fa-certificate"></i>
                         <span class="nav-item">Certificates</span>
                     </a>
@@ -82,11 +84,12 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item"><a href="/blotterRoute/blotterRecords" class="li"><i
-                            class="fa-solid fa-flag"></i><span class="nav-item">Blotter Records</span></a></li>
-                <li class="sidebar-item"><a href="/settings" class="li"><i class="fa-solid fa-gear"></i><span
-                            class="nav-item">Settings</span></a></li>
-                <li class="sidebar-item"><a href="/users/logout" class="logout li"><i
+                <li class="sidebar-item"><a href="/blotterRoute/blotterRecords" class="li" data-bs-toggle="tooltip"
+                        title="Blotter Records"><i class="fa-solid fa-flag"></i><span class="nav-item">Blotter
+                            Records</span></a></li>
+                <li class="sidebar-item"><a href="/settings" class="li"><i class="fa-solid fa-gear" data-bs-toggle="tooltip"
+                            title="Settings"></i><span class="nav-item">Settings</span></a></li>
+                <li class="sidebar-item"><a href="/users/logout" class="logout li" data-bs-toggle="tooltip" title="Logout"><i
                             class="fa-solid fa-right-from-bracket"></i><span class="nav-item">Log out</span></a></li>
             </ul>
         </div>
@@ -115,9 +118,8 @@
                                         <th>Place of Birth</th>
                                         <th>Years of Residency</th>
                                         <th>Civil Status</th>
-                                        <th>Position</th>
                                         <th>Sex</th>
-                                        <th>Nature of Work</th>
+                                        <th>Occupation</th>
                                         <th>Education</th>
                                         <th>Company Name</th>
                                         <th>Voter Status</th>
@@ -134,19 +136,19 @@
                                         <td><%= resident.placeOfBirth %></td>
                                         <td><%= resident.yearsOfResidency %></td>
                                         <td><%= resident.civilStatus %></td>
-                                        <td><%= resident.position %></td>
                                         <td><%= resident.sex %></td>
-                                        <td><%= resident.natureOfwork %></td>
+                                        <td><%= resident.occupation %></td>
                                         <td><%= resident.education %></td>
                                         <td><%= resident.companyName %></td>
                                         <td><%= resident.voterStatus %></td>
                                         <td>
                                             <!-- Action button (Edit button) -->
-                                            <a href="/edit/<%= resident._id %>" class="text-warning" title="Edit"
-                                                data-bs-toggle="modal" data-bs-target="#updateRes">
+                                            <a href="/edit/<%= resident._id %>" class="text-warning" title="Edit" data-bs-toggle="modal"
+                                                data-bs-target="#updateRes">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="/certificates/profile/<%= resident._id %>" class="text-info" title="See Details">
+
+                                            <a href="/residentData/profile/<%= resident._id %>" class="text-info" title="See Details">
                                                 <i class="fas fa-file-pdf"></i>
                                             </a>
                                         </td>
@@ -220,58 +222,70 @@
                     <h4 class="modal-title">Add Resident Information</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
                 </div>
-
+    
                 <div class="modal-body">
                     <form action="/residentData/addResident" method="post" id="addForm">
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-4">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+                                <input type="text" class="form-control" id="firstName" name="firstName"
+                                    placeholder="Enter first name">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-4 mb-4">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Enter last name">
+                                <input type="text" class="form-control" id="lastName" name="lastName"
+                                    placeholder="Enter last name">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-2 mb-4">
+                                <label for="suffix" class="form-label">Suffix</label>
+                                <input type="text" class="form-control" id="suffix" name="suffix" placeholder="(Suffix, eg., Jr, I, II, III)">
+                            </div>
+                            <div class="col-md-2 mb-4">
                                 <label for="age" class="form-label">Age</label>
                                 <input type="number" class="form-control" id="age" name="age" placeholder="Enter age">
                             </div>
                         </div>
-                    
+    
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-4">
                                 <label for="dob" class="form-label">Date of Birth</label>
                                 <input type="date" class="form-control" id="dob" name="dob">
                             </div>
-                            
-                            <div class="col-md-4 mb-3">
+    
+                            <div class="col-md-3 mb-4">
                                 <label for="placeOfBirth" class="form-label">Place of Birth</label>
-                                <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth" placeholder="Enter place of birth">
+                                <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth"
+                                    placeholder="Enter place of birth">
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-4">
+                                <label for="religion" class="form-label">Religion</label>
+                                <input type="text" class="form-control" id="religion" name="religion"
+                                    placeholder="Enter religion.">
+                            </div>
+                            <div class="col-md-3 mb-4">
                                 <label for="yearsOfResidency" class="form-label">Years of Residency</label>
                                 <input type="number" class="form-control" id="yearsInBrgy" name="yearsOfResidency"
                                     placeholder="Enter years of residency.">
                             </div>
                         </div>
-                        
+    
                         <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-4">
+                                <label for="citizenship" class="form-label">Citizenship</label>
+                                <input type="text" class="form-control" id="citizenship" name="citizenship"
+                                    placeholder="Enter citizenship.">
+                            </div>
+                            <div class="col-md-3 mb-4">
                                 <label for="civilStatus" class="form-label">Civil Status</label>
                                 <select class="form-select" id="civilStatus" name="civilStatus">
                                     <option selected>Choose...</option>
-                                    <option value="Male">Single</option>
-                                    <option value="Female">Married</option>
-                                    <option value="Female">Separated</option>
-                                    <option value="Female">Divorced</option>
+                                    <option value="Single">Single</option>
+                                    <option value="Married">Married</option>
+                                    <option value="Separated">Separated</option>
+                                    <option value="Divorced">Divorced</option>
                                 </select>
-                                
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <label for="position" class="form-label">Position</label>
-                                <input type="text" class="form-control" id="position" name="position" placeholder="Enter position">
-                            </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-4">
                                 <label for="sex" class="form-label">Sex</label>
                                 <select class="form-select" id="sex" name="sex">
                                     <option selected>Choose...</option>
@@ -279,42 +293,45 @@
                                     <option value="Female">Female</option>
                                 </select>
                             </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
-                                <label for="natureOfwork" class="form-label">Nature of work</label>
-                                <input type="text" class="form-control" id="occupation" name="natureOfwork" placeholder="Enter occupation">
+                            <div class="col-md-3 mb-4">
+                                <label for="occupation" class="form-label">Occupation</label>
+                                <input type="text" class="form-control" id="occupation" name="occupation"
+                                    placeholder="Enter occupation">
                             </div>
-                            <div class="col-md-4 mb-3">
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-3 mb-5">
                                 <label for="education" class="form-label">Educational Attainment</label>
                                 <select class="form-select" id="education" name="education">
                                     <option selected>Choose...</option>
-                                    <option value="elementary">Elementary</option>
-                                    <option value="highschool">High School</option>
-                                    <option value="highschool">College</option>
-                                    <option value="highschool">Post Grad</option>
-                                    <option value="highschool">Vocational</option>
+                                    <option value="Elementary">Elementary</option>
+                                    <option value="High School">High School</option>
+                                    <option value="College">College</option>
+                                    <option value="Post Grad">Post Grad</option>
+                                    <option value="Vocational">Vocational</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-5">
                                 <label for="companyName" class="form-label">Name of Company</label>
                                 <input type="text" class="form-control" id="companyName" name="companyName"
                                     placeholder="Enter the name of company.">
                             </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md-3 mb-5">
+                                <label for="contact" class="form-label">Contact No.</label>
+                                <input type="text" class="form-control" id="contact" name="contact"
+                                    placeholder="Enter Contact No.">
+                            </div>
+                            <div class="col-md-3 mb-5">
                                 <label for="voterStatus" class="form-label">Voter Status</label>
                                 <select class="form-select" id="voterStatus" name="voterStatus">
                                     <option selected>Choose...</option>
-                                    <option value="Male">Voter</option>
-                                    <option value="Female">Non-Voter</option>
+                                    <option value="Voter">Voter</option>
+                                    <option value="Non-Voter">Non-Voter</option>
                                 </select>
                             </div>
                         </div>
-                    
+    
                         <div class="row">
                             <div class="col-12 d-flex justify-content-end">
                                 <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
@@ -322,11 +339,11 @@
                             </div>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Edit Resident Modal -->
     <div class="modal fade" id="updateRes">
@@ -342,86 +359,100 @@
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" name="firstName"
-                                        value="<%= resident.fname %>" required>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" value="<%= resident.fname %>">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" name="lastName"
-                                        value="<%= resident.lname %>" required>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" value="<%= resident.lname %>">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="age" class="form-label">Age</label>
-                                    <input type="number" class="form-control" id="age" name="age"
-                                        value="<%= resident.age %>" required>
+                                    <input type="number" class="form-control" id="age" name="age" value="<%= resident.age %>">
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="dob" class="form-label">Date of Birth</label>
-                                    <input type="date" class="form-control" id="dob" name="dob"
-                                        value="<%= resident.dob.toISOString().split('T')[0] %>" required>
+                                    <input type="date" class="form-control" id="dob" name="dob" value="<%= resident.dob ? new Date(resident.dob).toISOString().slice(0, 10) : '' %>">
                                 </div>
+                            
                                 <div class="col-md-4 mb-3">
                                     <label for="placeOfBirth" class="form-label">Place of Birth</label>
                                     <input type="text" class="form-control" id="placeOfBirth" name="placeOfBirth"
-                                        value="<%= resident.placeOfBirth %>" required>
+                                        value="<%= resident.placeOfBirth %>">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="yearsOfResidency" class="form-label">Years of Residency</label>
                                     <input type="number" class="form-control" id="yearsInBrgy" name="yearsOfResidency"
-                                        value="<%= resident.yearsOfResidency %>" required>
+                                        value="<%= resident.yearsOfResidency %>">
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="civilStatus" class="form-label">Civil Status</label>
-                                    <input type="text" class="form-control" id="civilStatus" name="civilStatus"
-                                        value="<%= resident.civilStatus %>" required>
+                                    <select class="form-select" id="civilStatus" name="civilStatus">
+                                        <option selected value="<%= resident.fname %>">Choose...</option>
+                                        <option value="Single" <%= resident.civilStatus === 'Single' ? 'selected' : '' %>>Single</option>
+                                        <option value="Married" <%= resident.civilStatus === 'Married' ? 'selected' : '' %>>Married</option>
+                                        <option value="Separated" <%= resident.civilStatus === 'Separated' ? 'selected' : '' %>>Separated</option>
+                                        <option value="Divorced" <%= resident.civilStatus === 'Divorced' ? 'selected' : '' %>>Divorced</option>
+                                    </select>
+                            
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="position" class="form-label">Position</label>
-                                    <input type="text" class="form-control" id="position" name="position"
-                                        value="<%= resident.position %>" required>
+                                    <input type="text" class="form-control" id="position" name="position" value="<%= resident.position %>">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="sex" class="form-label">Sex</label>
-                                    <select class="form-select" id="sex" name="sex" required>
-                                        <option value="Male" <%=resident.sex==='Male' ? 'selected' : '' %>>Male</option>
-                                        <option value="Female" <%=resident.sex==='Female' ? 'selected' : '' %>>Female
-                                        </option>
+                                    <select class="form-select" id="sex" name="sex">
+                                        <option selected value="<%= resident.fname %>">Choose...</option>
+                                        <option value="Male" <%= resident.sex === 'Male' ? 'selected' : '' %>>Male</option>
+                                        <option value="Female" <%= resident.sex === 'Female' ? 'selected' : '' %>>Female</option>
                                     </select>
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-md-4 mb-3">
-                                    <label for="natureOfwork" class="form-label">Nature of Work</label>
-                                    <input type="text" class="form-control" id="occupation" name="natureOfwork"
-                                        value="<%= resident.natureOfwork %>" required>
+                                    <label for="natureOfwork" class="form-label">Nature of work</label>
+                                    <input type="text" class="form-control" id="occupation" name="natureOfwork" value="<%= resident.natureOfwork %>">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="education" class="form-label">Educational Attainment</label>
-                                    <input type="text" class="form-control" id="education" name="education"
-                                        value="<%= resident.education %>" required>
+                                    <select class="form-select" id="education" name="education">
+                                        <option selected>Choose...</option>
+                                        <option value="Elementary" <%= resident.education === 'Elementary' ? 'selected' : '' %>>Elementary</option>
+                                        <option value="High School" <%= resident.education === 'High School' ? 'selected' : '' %>>High School</option>
+                                        <option value="College" <%= resident.education === 'College' ? 'selected' : '' %>>College</option>
+                                        <option value="Post Grad" <%= resident.education === 'Post Grad' ? 'selected' : '' %>>Post Grad</option>
+                                        <option value="Vocational" <%= resident.education === 'Vocational' ? 'selected' : '' %>>Vocational</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="companyName" class="form-label">Name of Company</label>
                                     <input type="text" class="form-control" id="companyName" name="companyName"
-                                        value="<%= resident.companyName %>" required>
+                                        value="<%= resident.companyName %>">
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-md-4 mb-3">
                                     <label for="voterStatus" class="form-label">Voter Status</label>
-                                    <input type="text" class="form-control" id="voterStatus" name="voterStatus"
-                                        value="<%= resident.voterStatus %>" required>
+                                    <select class="form-select" id="voterStatus" name="voterStatus" value="<%= resident.voterStatus %>">
+                                        <option selected>Choose...</option>
+                                        <option value="Voter" <%= resident.voterStatus === 'Voter' ? 'selected' : '' %>>Voter</option>
+                                        <option value="Non-Voter" <%= resident.voterStatus === 'Non-Voter' ? 'selected' : '' %>>Non-Voter</option>
+                                    </select>
                                 </div>
                             </div>
+                            
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-end">
-                                    <button type="button" class="btn btn-secondary me-2"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn btn-danger">Edit Resident Information</button>
+                                    <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="submit" class="btn btn-danger">Add New Resident</button>
                                 </div>
                             </div>
                         </form>

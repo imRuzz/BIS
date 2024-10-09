@@ -5,7 +5,7 @@ const { ensureAuthenticated } = require('../config/auth');
 //Resident model
 const Resident = require('../models/resident');
 
-router.get('/profile', (req, res) => res.render('profile'));
+router.get('/certificates/profile', (req, res) => res.render('profile'));
 
 // Resident Info Page - Fetch and display all resident data
 router.get('/residentinfo', ensureAuthenticated, async (req, res) => {
@@ -24,21 +24,24 @@ router.get('/residentinfo', ensureAuthenticated, async (req, res) => {
 // Insert Resident data into the database
 router.post('/addResident', ensureAuthenticated, async (req, res) => {
     try {
-        const { firstName, lastName, age, dob, placeOfBirth, yearsOfResidency, civilStatus, position, sex, natureOfwork, education, companyName, voterStatus } = req.body;
+        const { firstName, lastName, suffix, age, dob, placeOfBirth, yearsOfResidency, civilStatus, citizenship, religion, sex, occupation, education, companyName, contact, voterStatus } = req.body;
 
         const newResident = new Resident({
             fname: firstName,
             lname: lastName,
+            suffix,
             age,
             dob,
             placeOfBirth,
             yearsOfResidency,
             civilStatus,
-            position,
+            citizenship,
+            religion,
             sex,
-            natureOfwork,
+            occupation,
             education,
             companyName,
+            contact,
             voterStatus,
         });
 
@@ -51,6 +54,7 @@ router.post('/addResident', ensureAuthenticated, async (req, res) => {
     }
 });
 
+
 // Fetch and display resident profile
 router.get('/profile/:id', ensureAuthenticated, async (req, res) => {
     try {
@@ -58,7 +62,7 @@ router.get('/profile/:id', ensureAuthenticated, async (req, res) => {
         if (!resident) {
             return res.status(404).send("Resident not found");
         }
-        res.render('profile', {
+        res.render('certificates/profile', {
             resident // Pass the resident data to the EJS template
         });
     } catch (err) {
