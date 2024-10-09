@@ -5,6 +5,8 @@ const { ensureAuthenticated } = require('../config/auth');
 //Resident model
 const Resident = require('../models/resident');
 
+router.get('/profile', (req, res) => res.render('profile'));
+
 // Resident Info Page - Fetch and display all resident data
 router.get('/residentinfo', ensureAuthenticated, async (req, res) => {
     try {
@@ -48,6 +50,23 @@ router.post('/addResident', ensureAuthenticated, async (req, res) => {
         res.status(500).send("Server error");
     }
 });
+
+// Fetch and display resident profile
+router.get('/profile/:id', ensureAuthenticated, async (req, res) => {
+    try {
+        const resident = await Resident.findById(req.params.id); // Fetch resident by ID
+        if (!resident) {
+            return res.status(404).send("Resident not found");
+        }
+        res.render('profile', {
+            resident // Pass the resident data to the EJS template
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+});
+
 
 
 module.exports = router;

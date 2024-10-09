@@ -8,6 +8,7 @@ const passport = require('passport');
 
 const app = express();
 const view = path.join(__dirname, './view');
+const certificates = path.join(__dirname, './view/certificates');
 
 //Passport config
 require('./config/passport')(passport)
@@ -24,6 +25,7 @@ mongoose.connect(db, { useNewUrlParser: true })
 app.use(expressLayouts);
 app.set('view engine', 'ejs');
 app.set('views', view);
+app.set('certs', certificates)
 
 //Bodyparser
 app.use(express.urlencoded({ extended: false }));
@@ -56,6 +58,7 @@ app.use('/users', require('./routes/users'));
 app.use('/residentData', require('./routes/residentData'));
 app.use('/blotterRoute', require('./routes/blotterRoute'));
 app.use('/settingsRoute', require('./routes/settingsRoute'));
+
 
 const residentData = require('./routes/residentData');
 app.use('/residentData', residentData);

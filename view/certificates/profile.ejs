@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resident Profile</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .profileContainer {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            position: relative;
+            box-sizing: border-box;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .header p {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .seal,
+        .barangay-logo {
+            position: absolute;
+            top: 20px;
+            width: 80px;
+        }
+
+        .seal {
+            left: 20px;
+        }
+
+        .barangay-logo {
+            right: 20px;
+        }
+
+        .information {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .information-header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 10px;
+        }
+
+        .information-header h4,
+        .information-header h5 {
+            margin: 0;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .information p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .download-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .download-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <button class="download-btn" onclick="downloadPDF()">Print Report</button>
+    </div>
+    <div class="profileContainer">
+
+        <div class="header">
+            <img class="seal" src="/public/images/brgylogo.png" alt="Seal">
+            <img class="barangay-logo" src="/public/images/brgylogo.png" alt="Barangay Logo">
+            <h1>Republic of the Philippines</h1>
+            <p>Province of Cavite<br>Municipality of Alfonso<br>Barangay Bilog</p>
+            <h1>Resident Profile</h1>
+        </div>
+
+        <div class="information">
+            <div class="information-header">
+                <h4>Name: </h4>
+                <h5>Age: </h5>
+                <h5>Sex: </h5>
+            </div>
+
+            <div class="information">
+                <p>Date of Birth: </p>
+                <p>Place of Birth: </p>
+                <p>Years of Residency: </p>
+                <p>Civil Status: </p>
+                <p>Nature of Work: </p>
+                <p>Education: </p>
+                <p>Company Name: </p>
+                <p>Voter Status: </p>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>
