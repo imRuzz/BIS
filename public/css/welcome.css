@@ -1,0 +1,366 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+.welcome-section {
+    background-color: #384B70;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    height: 100vh;
+    padding-top: 50px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: #384B70;
+    z-index: 1000;
+}
+
+header .navbar {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navbar .menu-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 1.7rem;
+}
+
+.navbar .menu-links a {
+    font-size: 1.2rem;
+}
+
+li a {
+    position: relative;
+    color: #fff;
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+}
+
+li a::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+li a:hover::after {
+    width: 100%;
+}
+
+
+#close-menu-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+#hamburger-btn {
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px);
+    padding: 0 50px;
+}
+
+.logo-image img {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+    background-color: #ffffff;
+    border-radius: 50%;
+    margin-right: 50px;
+}
+
+.welcome-text {
+    max-width: 700px;
+}
+
+.welcome-text h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.welcome-text h2{
+    font-size: 26px; /* Adjust the font size */
+    color: #ffffff; /* Change color if needed */
+    margin: 15px 0; /* Adjust top and bottom margin */
+    line-height: 1.5;
+}
+
+.welcome-text p {
+    margin-bottom: 5px;
+}
+
+.about-button {
+    display: inline-block;
+    background-color: #e0e0e0;
+    color: #384B70;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.service-section {
+    background: linear-gradient(to top, white 50%, #384B70 50%);
+    padding: 60px 20px;
+    text-align: center;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+}
+
+.service-section h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 50px;
+}
+
+.documents-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.document-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 20px;
+    margin: 30px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.document-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+    background-color: #FAF9F6;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.document-card h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.document-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.proceed-btn {
+    background-color: #384B70;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.proceed-btn:hover {
+    background-color: #2f3f5d;
+}
+
+.section-header {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1028px) {
+    .navbar .logo {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+
+    .navbar .menu-links {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar .menu-links a{
+        color: #212121;
+        font-weight: 600;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    li {
+        width: 100%;
+    }
+
+    li a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    li a:hover {
+        background: #e5e8ee;
+        border-radius: 10px;
+        padding: 14px;
+    }
+
+    header.show-mobile-menu::before {
+        content: "";
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .navbar .logo {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+
+
+    #hamburger-btn,
+    #close-menu-btn {
+        display: block;
+        font-size: 22px;
+    }
+
+    .navbar .menu-links {
+        position: fixed;
+        top: 0;
+        left: -300px;
+        width: 300px;
+        height: 100vh;
+        background: #f8fafb;
+        flex-direction: column;
+        padding: 70px 40px 0;
+        transition: left 0.2s ease;
+    }
+
+    header.show-mobile-menu .navbar .menu-links {
+        left: 0;
+    }
+
+    .logo-image{
+        flex-direction: row;
+        margin-bottom: 20px;
+        width: 150px;
+    }
+
+    .main-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-content :is(h2, p) {
+        max-width: 100%;
+    }
+
+    .main-content h2 {
+        font-size: 2.3rem;
+        line-height: 60px;
+    }
+
+    .main-content button {
+        padding: 9px 18px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .navbar .logo {
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    #hamburger-btn,
+    #close-menu-btn {
+        font-size: 17px;
+    }
+
+    .logo-image{
+        margin-bottom: 20px;
+        width: 150px;
+    }
+
+    .welcome-section{
+        padding-top: 40px;
+    }
+
+    .welcome-text h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    }
+    
+    .welcome-text h2 {
+        font-size: 18px;
+        margin: 8px 0;
+    }
+
+    .welcome-text p {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+
+}

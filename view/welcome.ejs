@@ -1,12 +1,95 @@
-<div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body text-center" >
-            <img class="mx-auto d-block" style="width: 300px; height:300px; " src="/public/images/brgylogo.png" alt="">
-            <p style="font-size: 1.5em;">Brgy. Bilog Information System</p>
-            <a href="/users/login" class="btn btn-secondary btn-block"
-            style="height: 60px; font-size:1.2em; padding:10px;">
-                Login
-            </a>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barangay Ting-Tingon ABMS System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+            integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/css/welcome.css">
+</head>
+
+<body>
+    <section class="welcome-section">
+        <header class="header">
+            <nav class="navbar">
+                <a class="logo" href="#">Brgy. Bilog Information System</a>
+                <ul class="menu-links">
+                    <span id="close-menu-btn" class="material-symbols-outlined"><i class="fa-solid fa-bars"></i></span>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#">TRACK MY REQUEST</a></li>
+                    <li><a href="/users/login">LOGIN</a></li>
+                </ul>
+                <span id="hamburger-btn" class="material-symbols-outlined"><i class="fa-solid fa-bars"></i></span>
+            </nav>
+        </header>
+
+        <div class="main-content">
+            <div class="logo-image"><img src="/public/images/brgylogo.png" alt=""></div>
+            <div class="welcome-text">
+                <h1>WELCOME TO</h1>
+                <h2>BARANGAY BILOG INFORMATION SYSTEM</h2>
+                <p>Brgy. Bilog, Alfonso, Cavite</p>
+                <p>Open Hours of Barangay: Monday to Friday (8AM - 5PM)</p>
+                <p>brgy@gmail.com / 269-1034</p>
+                <a href="#" class="about-button">ABOUT US</a>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+
+    <section class="service-section" id="services">
+        <div class="section-header">
+            <h2>SERVICES</h1>
+            <h5>ONLINE DOCUMENTS OFFERED</h5>
+        </div>
+        <div class="documents-container">
+            <div class="document-card card">
+                <div class="icon">
+                    <img src="/public/images/services.png" alt="Document icon">
+                </div>
+                <h2>BARANGAY CLEARANCE</h2>
+                <p>View the requirements needed for Barangay Clearance and acquire online now.</p>
+                <button class="proceed-btn">PROCEED</button>
+            </div>
+            <div class="document-card card">
+                <div class="icon">
+                    <img src="/public/images/services.png" alt="Document icon">
+                </div>
+                <h2>RESIDENCY CERTIFICATE</h2>
+                <p>View the requirements needed for Barangay Residency and acquire online now.</p>
+                <button class="proceed-btn">PROCEED</button>
+            </div>
+            <div class="document-card card">
+                <div class="icon">
+                    <img src="/public/images/services.png" alt="Document icon">
+                </div>
+                <h2>BARANGAY BUSINESS PERMIT</h2>
+                <p>View the requirements needed for Barangay Permit and acquire online now.</p>
+                <button class="proceed-btn">PROCEED</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const header = document.querySelector("header");
+        const hamburgerBtn = document.querySelector("#hamburger-btn");
+        const closeMenuBtn = document.querySelector("#close-menu-btn");
+
+        // Toggle mobile menu on hamburger button click
+        hamburgerBtn.addEventListener("click", () => header.classList.toggle("show-mobile-menu"));
+
+        // Close mobile menu on close button click
+        closeMenuBtn.addEventListener("click", () => hamburgerBtn.click());
+    </script>
+
+</body>
+
+</html>
