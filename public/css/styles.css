@@ -51,11 +51,6 @@
     font-weight: 700;
 }
 
-.layout {
-    display: flex;
-    margin-top: 60px;
-}
-
 .menu-toggle {
     font-size: 1.5rem;
     color: white;
@@ -232,9 +227,10 @@
     text-align: center;
 }
 
-.settings-container{
-    width: 1000px;
-    height: 300px;
+.settings-container {
+    max-width: 1000px; /* Use max-width for responsiveness */
+    width: 100%; /* Full width on smaller screens */
+    height: auto; /* Height adjusts based on content */
     background: #faf9f6;
     text-decoration: none;
     padding: 30px;
@@ -346,6 +342,15 @@
         font-size: 1.25rem;
     }
 
+    .settings-container {
+        padding: 20px;
+    }
+
+    .settings-container li a {
+        font-size: 16px;
+        padding: 12px 15px;
+    }
+
 }
 
 @media (max-width: 576px) {
@@ -400,5 +405,18 @@
 
     .sidenavbar.active {
         left: 0;
+    }
+
+     .settings-container {
+        padding: 15px;
+    }
+
+    .settings-container li a {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .settings-container li {
+        margin-bottom: 10px;
     }
 }

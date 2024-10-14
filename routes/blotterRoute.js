@@ -27,32 +27,64 @@ router.get('/blotterRecords', ensureAuthenticated, async (req, res) => {
 router.post('/addBlotter', ensureAuthenticated, async (req, res) => {
     const { time, date, address, complainant, respondent, status } = req.body;
 
+    // Normalize the status to lowercase
+    const normalizedStatus = status ? status.toLowerCase() : 'active'; // Default to 'active' if status is not provided
+
     // Check if all fields are provided
-    if (!time || !date || !address || !complainant || !respondent || !status) {
+    if (!time || !date || !address || !complainant || !respondent || !normalizedStatus) {
         return res.status(400).json({ message: 'Please fill in all fields' });
     }
 
     try {
         const newBlotter = new Blotter({
             time,
-            date,
+            date: new Date(date),  // Convert to Date object
             address,
             complainant,
             respondent,
-            status
+            status: normalizedStatus  // Use normalized status
         });
 
         // Save the new blotter record
         await newBlotter.save();
 
-        // Optionally, set a success message here
-        // req.flash('success_msg', 'Blotter record added successfully');
-
         res.redirect('/blotterRoute/blotterRecords');
     } catch (error) {
-        console.error("Error adding blotter record:", error);
+        console.error("Error adding blotter record:", error.message);
         res.status(500).send('Server Error');
     }
 });
+
+
+// Edit Blotter Route
+router.post('/editBlotter', async (req, res) => {
+    try {
+        const { _id, time, date, address, complainant, respondent, status } = req.body;
+
+        // Find the blotter record by ID and update it
+        const updatedRecord = await Blotter.findByIdAndUpdate(
+            _id,
+            {
+                time,
+                date,
+                address,
+                complainant,
+                respondent,
+                status,
+            },
+            { new: true } // Return the updated document
+        );
+
+        if (updatedRecord) {
+            res.redirect('/blotterRoute/blotterRecords');
+        } else {
+            res.status(404).json({ message: 'Blotter record not found!' });
+        }
+    } catch (error) {
+        console.error('Error updating blotter record:', error);
+        res.status(500).json({ message: 'Server error', error });
+    }
+});
+
 
 module.exports = router;
