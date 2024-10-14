@@ -72,5 +72,43 @@ router.get('/profile/:id', ensureAuthenticated, async (req, res) => {
 });
 
 
+// Update Resident data in the database
+router.post('/editResident', ensureAuthenticated, async (req, res) => {
+    try {
+        const {_id, firstName, lastName, suffix, age, dob, placeOfBirth, yearsOfResidency, civilStatus, citizenship, religion, sex, occupation, education, companyName, contact, voterStatus } = req.body;
+
+        // Find the resident by ID and update their information
+        const updatedResident = await Resident.findByIdAndUpdate(_id, {
+            fname: firstName,
+            lname: lastName,
+            suffix,
+            age,
+            dob,
+            placeOfBirth,
+            yearsOfResidency,
+            civilStatus,
+            citizenship,
+            religion,
+            sex,
+            occupation,
+            education,
+            companyName,
+            contact,
+            voterStatus,
+        }, { new: true }); // new: true returns the updated document
+
+        if (!updatedResident) {
+            return res.status(404).send("Resident not found");
+        }
+
+        res.redirect('/residentData/residentinfo'); // Redirect after successful update
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("Server error");
+    }
+});
+
+
 
 module.exports = router;
